@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:no_name/utilities/constants.dart';
+import 'package:no_name/screens/signUp.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -115,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget _buildSignUpBtn(){
     return GestureDetector(
-      onTap: () => print('Sign Up Button Pressed'),
+      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => signUp()),),
       child: RichText(
         text: TextSpan(
           children: [
@@ -128,7 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             TextSpan(
-              text: 'Sign up',
+              text: 'Sign up!',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,
