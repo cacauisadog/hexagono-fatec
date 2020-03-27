@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:no_name/utilities/constants.dart';
 import 'package:no_name/screens/signUp.dart';
+import 'package:no_name/screens/HomePage.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -93,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
       width: double.infinity,
       child: RaisedButton(
         elevation: 5.0,
-        onPressed: () => print('Login Button Pressed'),
+        onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Homepage()),),
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
@@ -115,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget _buildSignUpBtn(){
     return GestureDetector(
-      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => signUp()),),
+      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SignUp()),),
       child: RichText(
         text: TextSpan(
           children: [

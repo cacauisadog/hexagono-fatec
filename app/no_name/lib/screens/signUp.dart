@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:no_name/utilities/constants.dart';
 
-class signUp extends StatefulWidget {
+class SignUp extends StatefulWidget {
   @override
-  _signUpState createState() => _signUpState();
+  _SignUpState createState() => _SignUpState();
 }
 
-class _signUpState extends State<signUp> {
+class _SignUpState extends State<SignUp> {
 
   Widget _buildNameTF(){
     return Column(
