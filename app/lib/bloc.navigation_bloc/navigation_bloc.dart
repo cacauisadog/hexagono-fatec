@@ -13,9 +13,7 @@ enum NavigationEvents {
   LogoutClickedEvent
 }
 
-abstract class NavigationStates {
-
-}
+abstract class NavigationStates {}
 
 class NavigationBloc extends Bloc<NavigationEvents, NavigationStates>{
   @override

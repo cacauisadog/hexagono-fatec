@@ -1,9 +1,36 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:app/bloc.navigation_bloc/navigation_bloc.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:app/screens/sidebar/Menu_Item.dart';
+import 'package:app/bloc.navigation_bloc/navigation_bloc.dart';
+import 'package:app/screens/sidebar/menu_item.dart';
+
+class CustomMenuClipper extends CustomClipper<Path>{
+  @override
+  Path getClip(Size size){
+    Paint paint = Paint();
+    paint.color = Colors.white;
+
+    final width = size.width;
+    final height = size.height;
+
+    Path path = Path();
+    path.moveTo(0, 0);
+    path.quadraticBezierTo(0, 8, 10, 16);
+    path.quadraticBezierTo(width -1, height / 2 - 20, width, height / 2);
+    path.quadraticBezierTo(width + 1, height / 2 + 20, 10, height - 16);
+    path.quadraticBezierTo(0, height - 8, 0, height);
+
+    path.close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper){
+    return true;
+  }
+}
 
 class Sidebar extends StatefulWidget {
   @override
@@ -16,7 +43,6 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin<S
   StreamController<bool> isSidebarOpenedStreamController;
   Stream<bool> isSidebarOpenedStream;
   StreamSink<bool>isSidebarOpenedSink;
-  final bool isSidebarOpened = false;
   final _animationDuration = const Duration(milliseconds: 500);
 
   @override
@@ -52,8 +78,7 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin<S
 
   @override
   Widget build(BuildContext context) {
-
-    double screenWidth = MediaQuery.of(context).size.width;
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return StreamBuilder<bool>(
       initialData: false,
@@ -63,14 +88,14 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin<S
           duration: _animationDuration,
           top: 0,
           bottom: 0,
-          left: isSidebarOpenedAsync.data? 0 : 0,
+          left: isSidebarOpenedAsync.data? 0 : -screenWidth,
           right: isSidebarOpenedAsync.data? 0 : screenWidth - 45,
           child: Row(
             children: <Widget>[  
               Expanded(
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  color: Color(0xDD000000),
+                  color: const Color(0xDD000000),
                   child: Column(
                     children: <Widget>[
                       SizedBox(height: 100,),
@@ -138,11 +163,11 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin<S
                         title: "Settings",
                         onTap: () {
                           onIconPressed();
-                          BlocProvider.of<NavigationBloc>(context).add(NavigationEvents.HomePageClickedEvent);
+                          BlocProvider.of<NavigationBloc>(context).add(NavigationEvents.SettingsClickedEvent);
                         }
                       ), 
                       MenuItem(
-                        icon: Icons.settings,
+                        icon: Icons.exit_to_app,
                         title: "Log out",
                       ), 
                     ],
@@ -177,32 +202,5 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin<S
         );
       },
     );
-  }
-}
-
-class CustomMenuClipper extends CustomClipper<Path>{
-  @override
-  Path getClip(Size size){
-    Paint paint = Paint();
-    paint.color = Colors.white;
-
-    final width = size.width;
-    final height = size.height;
-
-    Path path = Path();
-    path.moveTo(0, 0);
-    path.quadraticBezierTo(0, 8, 10, 16);
-    path.quadraticBezierTo(width -1, height / 2 - 20, width, height / 2);
-    path.quadraticBezierTo(width + 1, height / 2, 10, height - 16);
-    path.quadraticBezierTo(0, height - 8, 0, height);
-
-    path.close();
-
-    return null;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper){
-    return true;
   }
 }
