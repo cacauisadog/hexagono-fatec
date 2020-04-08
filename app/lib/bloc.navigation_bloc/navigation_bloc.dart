@@ -1,13 +1,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:app/screens/homepage.dart';
 import 'package:app/screens/notifications.dart';
-import 'package:app/screens/profile.dart';
+import 'package:app/screens/account.dart';
 import 'package:app/screens/settings.dart';
 import 'package:app/screens/logout.dart';
 
 enum NavigationEvents {
   HomePageClickedEvent,
-  MyProfileClickedEvent,
+  AccountClickedEvent,
   NotificationsClickedEvent,
   SettingsClickedEvent,
   LogoutClickedEvent
@@ -25,8 +25,8 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates>{
       case NavigationEvents.HomePageClickedEvent:
         yield Homepage();
         break;
-      case NavigationEvents.MyProfileClickedEvent:
-        yield MyProfile();
+      case NavigationEvents.AccountClickedEvent:
+        yield MyAccount();
         break;
       case NavigationEvents.SettingsClickedEvent:
         yield Settings();
@@ -39,5 +39,4 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates>{
         break;
     }
   }
-
 }

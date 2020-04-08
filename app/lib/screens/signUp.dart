@@ -138,7 +138,7 @@ class _SignUpState extends State<SignUp> {
           return <Widget>[
             SliverAppBar(
               backgroundColor: Color(0xFF000000),
-              expandedHeight: 130.0,
+              expandedHeight: 120.0,
               floating: false,
               pinned: true,
               flexibleSpace: FlexibleSpaceBar(
@@ -152,10 +152,6 @@ class _SignUpState extends State<SignUp> {
                     fontSize: 18.0,
                     fontWeight: FontWeight.bold,
                   )
-                ),
-                background: Image.asset(
-                  "../assets/image_8fad1110-422d-4203-a9c3-89e646b9c68e20200318_204412 (1).jpg",
-                  fit: BoxFit.cover,
                 ),
               ),
             ),

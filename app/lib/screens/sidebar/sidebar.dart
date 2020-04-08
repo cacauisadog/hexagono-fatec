@@ -101,13 +101,13 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin<S
                       SizedBox(height: 100,),
                       ListTile(
                         title: Text(
-                          "Bárbara",
+                          "Aaaaaaaaaa",
                           style: TextStyle(color: Colors.white,
                           fontSize: 30,
                           fontWeight: FontWeight.w800),
                         ),
                         subtitle: Text(
-                          "barbara.port@outlook.com",
+                          "aaaaaaaaaaa@outlook.com",
                           style: TextStyle(color: Colors.white12,
                           fontSize: 30,
                           fontWeight: FontWeight.w800),
@@ -148,7 +148,7 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin<S
                         title: "My profile",
                         onTap: () {
                           onIconPressed();
-                          BlocProvider.of<NavigationBloc>(context).add(NavigationEvents.MyProfileClickedEvent);
+                          BlocProvider.of<NavigationBloc>(context).add(NavigationEvents.AccountClickedEvent);
                         }
                       ),
                       Divider(
