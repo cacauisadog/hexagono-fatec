@@ -14,9 +14,9 @@ class SettingsBody extends StatelessWidget {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter, 
               colors: [
-                Color(0xFF000000),
                 Color(0xDD000000),
-                Color(0xDD000000),              
+                Color(0xFF000000),
+                Color(0xFF000000),              
               ],
               stops: [0.1, 0.7, 0.9],)
             ),
@@ -26,19 +26,21 @@ class SettingsBody extends StatelessWidget {
             child: SingleChildScrollView(
               physics: AlwaysScrollableScrollPhysics(),
               padding: EdgeInsets.symmetric(
-                horizontal: 40.0,
-                vertical: 120.0,
+                horizontal: 40,
+                vertical: 68,
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(
-                    'Settings!',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'OpenSans',
-                      fontSize: 40.0,
-                      fontWeight: FontWeight.bold,
+                  Center (
+                    child: Text(
+                      'Settings!',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'OpenSans',
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],

@@ -95,107 +95,103 @@ class SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin<Si
           bottom: 0,
           left: isSidebarOpenedAsync.data? 0 : -screenWidth,
           right: isSidebarOpenedAsync.data? 0 : screenWidth - 45,
-          child: Opacity (
-            opacity: 1.0,
-            child: 
-              Row(
-                children: <Widget>[  
-                  Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      color: const Color(0xDD000000),
-                      child: Column(
-                        children: <Widget>[
-                          SizedBox(height: 100,),
-                          ListTile(
-                            title: Text(
-                              "Usuário",
-                              style: TextStyle(color: Colors.white,
-                              fontSize: 30,
-                              fontWeight: FontWeight.w800),
-                            ),
-                            subtitle: Text(
-                              "usuario@outlook.com",
-                              style: TextStyle(color: Colors.white12,
-                              fontSize: 30,
-                              fontWeight: FontWeight.w800),
-                            ),
-                            leading: CircleAvatar(
-                              child: Icon(
-                                Icons.perm_identity,
-                                color: Colors.white,
-                              ),
-                              radius: 40,
-                            ),
-                          ),
-                          Divider(
-                            height: 64,
-                            thickness: 0.5,
-                            color: Colors.white.withOpacity(0.3),
-                            indent: 32,   
-                            endIndent: 32,
-                          ),
-                          MenuItem(
-                            icon: Icons.home,
-                            title: "Home",
-                            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Homepage()),),
-                          ),
-                          MenuItem(
-                            icon: Icons.notifications,
-                            title: "Notifications",
-                            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Notifications()),),
-                          ),
-                          MenuItem(
-                            icon: Icons.person,
-                            title: "My account",
-                            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MyAccount()),),
-                          ),
-                          Divider(
-                            height: 64,
-                            thickness: 0.5,
-                            color: Colors.white.withOpacity(0.3),
-                            indent: 32,   
-                            endIndent: 32,
-                          ),
-                          MenuItem(
-                            icon: Icons.settings,
-                            title: "Settings",
-                            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()),),
-                          ), 
-                          MenuItem(
-                            icon: Icons.exit_to_app,
-                            title: "Log out",
-                            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Logout()),),
-                          ), 
-                        ],
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment(0, -0.9),
-                    child: GestureDetector(
-                      onTap: (){
-                        onIconPressed();
-                      },
-                      child: ClipPath(
-                        clipper: CustomMenuClipper(),
-                        child: Container(
-                          width: 35,
-                          height: 110,
-                          color: Color(0xDD000000),
-                          alignment: Alignment.centerLeft,
-                          child: AnimatedIcon(
-                            progress: animationController.view,
-                            icon: AnimatedIcons.menu_close,
+          child: Row(
+            children: <Widget>[  
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  color: const Color(0xDD000000).withOpacity(1.0),
+                  child: Column(
+                    children: <Widget>[
+                      SizedBox(height: 100,),
+                      ListTile(
+                        title: Text(
+                          "Usuário",
+                          style: TextStyle(color: Colors.white,
+                          fontSize: 30,
+                          fontWeight: FontWeight.w800),
+                        ),
+                        subtitle: Text(
+                          "usuario@outlook.com",
+                          style: TextStyle(color: Colors.white60,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w800),
+                        ),
+                        leading: CircleAvatar(
+                        child: Icon(
+                            Icons.perm_identity,
                             color: Colors.white,
-                            size: 25,
                           ),
+                          radius: 40,
                         ),
                       ),
+                      Divider(
+                        height: 64,
+                        thickness: 0.5,
+                        color: Colors.white.withOpacity(0.3),
+                        indent: 32,   
+                        endIndent: 32,
+                      ),
+                      MenuItem(
+                        icon: Icons.home,
+                        title: "Home",
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Homepage()),),
+                      ),
+                      MenuItem(
+                        icon: Icons.notifications,
+                        title: "Notifications",
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Notifications()),),
+                      ),
+                      MenuItem(
+                        icon: Icons.person,
+                        title: "My account",
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MyAccount()),),
+                      ),
+                      Divider(
+                        height: 64,
+                        thickness: 0.5,
+                        color: Colors.white.withOpacity(0.3),
+                        indent: 32,   
+                        endIndent: 32,
+                      ),
+                      MenuItem(
+                        icon: Icons.settings,
+                        title: "Settings",
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()),),
+                      ), 
+                      MenuItem(
+                        icon: Icons.exit_to_app,
+                        title: "Log out",
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Logout()),),
+                      ), 
+                    ],
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment(0, -0.9),
+                child: GestureDetector(
+                  onTap: (){
+                    onIconPressed();
+                  },
+                  child: ClipPath(
+                    clipper: CustomMenuClipper(),
+                    child: Container(
+                      width: 35,
+                      height: 110,
+                      color: Color(0xDD000000),
+                      alignment: Alignment.centerLeft,
+                      child: AnimatedIcon(
+                        progress: animationController.view,
+                        icon: AnimatedIcons.menu_close,
+                        color: Colors.white,
+                        size: 25,
+                      ),
                     ),
                   ),
-                ],
+                ),
               ),
+            ],
           ),
         );
       },

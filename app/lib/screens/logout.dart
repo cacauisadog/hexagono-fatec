@@ -37,7 +37,7 @@ class LogoutBody extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'OpenSans',
-                      fontSize: 40.0,
+                      fontSize: 40,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

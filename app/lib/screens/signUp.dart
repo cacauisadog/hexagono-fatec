@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:app/utilities/constants.dart';
+import 'package:app/screens/login.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -110,7 +111,7 @@ class _SignUpState extends State<SignUp> {
       width: double.infinity,
       child: RaisedButton(
         elevation: 5.0,
-        onPressed: () => print('Sign up Button Pressed'),
+        onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()),),
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
@@ -121,7 +122,7 @@ class _SignUpState extends State<SignUp> {
           style: TextStyle(
             color: Color(0xDD000000),
             letterSpacing: 1.5,
-            fontSize: 18.0,
+            fontSize: 18,
             fontWeight: FontWeight.bold,
             fontFamily: 'OpenSans',
           ),
@@ -138,7 +139,7 @@ class _SignUpState extends State<SignUp> {
           return <Widget>[
             SliverAppBar(
               backgroundColor: Color(0xFF000000),
-              expandedHeight: 120.0,
+              expandedHeight: 125,
               floating: false,
               pinned: true,
               flexibleSpace: FlexibleSpaceBar(
@@ -149,8 +150,9 @@ class _SignUpState extends State<SignUp> {
                 title: Text('Sign up',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 18.0,
+                    fontSize: 25,
                     fontWeight: FontWeight.bold,
+                    fontFamily: 'OpenSans',
                   )
                 ),
               ),
@@ -167,8 +169,8 @@ class _SignUpState extends State<SignUp> {
               end: Alignment.bottomCenter, 
               colors: [
                 Color(0xFF000000),
-                Color(0xDD000000),
-                Color(0xFF000000),              
+                Color(0xFF000000),
+                Color(0xDD000000),              
               ],
               stops: [0.1, 0.5, 0.9],
             )),
@@ -179,7 +181,7 @@ class _SignUpState extends State<SignUp> {
               physics: AlwaysScrollableScrollPhysics(),
               padding: EdgeInsets.symmetric(
                 horizontal: 40.0,
-                vertical: 120.0,
+                vertical: 20.0,
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
