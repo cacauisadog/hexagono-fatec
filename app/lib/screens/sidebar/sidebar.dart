@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:app/screens/account.dart';
 import 'package:app/screens/homepage.dart';
-import 'package:app/screens/logout.dart';
+import 'package:app/screens/login.dart';
 import 'package:app/screens/notifications.dart';
 import 'package:app/screens/settings.dart';
 
@@ -162,7 +162,7 @@ class SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin<Si
                       MenuItem(
                         icon: Icons.exit_to_app,
                         title: "Log out",
-                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Logout()),),
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()),),
                       ), 
                     ],
                   ),

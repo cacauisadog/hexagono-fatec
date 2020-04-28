@@ -1,7 +1,11 @@
+import 'package:app/core/internationalization/app_localizations.dart';
+import 'package:app/core/internationalization/app_translate.dart';
+import 'package:app/screens/forgotPassword.dart';
 import 'package:flutter/material.dart';
 import 'package:app/utilities/constants.dart';
 import 'package:app/screens/signUp.dart';
 import 'package:app/screens/HomePage.dart';
+import 'package:app/utilities/selectLanguage.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -33,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
               border:InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(Icons.email, color: Colors.white,),
-              hintText: 'Enter your e-mail',
+              hintText: AppTranslate(context).text('Enter your e-mail'),
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -47,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Password',
+          AppTranslate(context).text('Password'),
           style: kLabelStyle,
         ),
         SizedBox(height: 10.0),
@@ -65,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
               border:InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(Icons.lock, color: Colors.white,),
-              hintText: 'Enter your password',
+              hintText: AppTranslate(context).text('Enter your password'),
               hintStyle: kHintTextStyle,
             ),
           ),
@@ -78,10 +82,10 @@ class _LoginScreenState extends State<LoginScreen> {
     return Container(
       alignment: Alignment.centerRight,
       child: FlatButton(
-        onPressed: () => print('Forgot Password Button Pressed'),
+        onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPassword()),),
         padding: EdgeInsets.only(right: 0.0),
         child: Text(
-          'Forgot password?',
+          AppTranslate(context).text('Forgot password?'),
           style: kLabelStyle,
         ),
       ),
@@ -101,7 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         color: Colors.white,
         child: Text(
-          'LOGIN',
+          AppTranslate(context).text('LOGIN'),
           style: TextStyle(
             color: Color(0xDD000000),
             letterSpacing: 1.5,
@@ -121,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
         text: TextSpan(
           children: [
             TextSpan(
-              text: 'Don\'t have an account? ',
+              text: AppTranslate(context).text("Don't have an account? "),
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,
@@ -129,7 +133,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             TextSpan(
-              text: 'Sign up!',
+              text: AppTranslate(context).text('Sign up!'),
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,
@@ -144,6 +148,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: Stack(children: <Widget>[
         Container(
@@ -173,7 +178,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    'Sign in',
+                    AppLocalizations.of(context).translate('Sign in'),
                     style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'OpenSans',
@@ -188,6 +193,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   _buildForgotPasswordBtn(),
                   _buildLoginBtn(),
                   _buildSignUpBtn(),
+                  
+                  selectLanguage(),
+                  
                 ],
               ),
             ),
