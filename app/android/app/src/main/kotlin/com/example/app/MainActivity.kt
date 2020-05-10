@@ -1,4 +1,4 @@
-package com.example.app
+package com.hexagono.app
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

@@ -1,6 +1,7 @@
 import 'package:app/core/internationalization/app_localizations.dart';
 import 'package:app/core/internationalization/app_translate.dart';
 import 'package:app/screens/forgotPassword.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:app/utilities/constants.dart';
 import 'package:app/screens/signUp.dart';
@@ -13,6 +14,14 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
+@override
+void initState(){
+  Firestore.instance.collection('books').document()
+  .setData({ 'title': 'title', 'author': 'author' });
+  super.initState();
+}
+
 
   Widget _buildEmailTF(){
     return Column(
