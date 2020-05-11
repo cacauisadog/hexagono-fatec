@@ -5,12 +5,17 @@
 #include <WiFiClient.h>
 #include <ESP8266WebServer.h>
 #include <ESP8266mDNS.h>
+#include <FirebaseArduino.h>
 
 //Dados da rede wifi
-#define STASSID "SSID" //coloca a ssid da sua net no lugar do SSID
-#define STAPSK  "PASSWORD" //coloca a senah no lugar do password
+#define STASSID "FGJ" //coloca a ssid da sua net no lugar do SSID
+#define STAPSK  "16172225" //coloca a senha no lugar do password
 const char* ssid = STASSID;
 const char* password = STAPSK;
+
+//Dados do firebase
+#define FIREBASE_HOST "app-db-e1e6c.firebaseio.com"
+#define FIREBASE_AUTH "EoK7FY1kMA7DhyNJqgO9DzkXfavLcU31arqA1t3X"
 
 ESP8266WebServer server(80);
 
@@ -72,13 +77,29 @@ void setup()
 
   //Inicializa o sensor de temperatura
   dht.begin();
+
+  //Iniciar Firebase
+  Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
 }
 
 void handleRoot()
 {
   server.send(200, "text/plain", "verificacao de temperatura em tempo real\n\nA temperatura atual e de " + String(t) + " graus\nA temperatura maxima foi de " + String(maxima) + " graus \ne a minima foi " + String(minima) + " graus");
 }
-
+void drawLines() {
+  for (int16_t i=0; i<display.getWidth(); i+=4) {
+    display.drawLine(0, 0, i, display.getHeight()-1);
+    display.display();
+    delay(10);
+  }
+  for (int16_t i=0; i<display.getHeight(); i+=4) {
+    display.drawLine(0, 0, display.getWidth()-1, i);
+    display.display();
+    delay(10);
+  }
+  delay(250);
+}
+  
 void Atualiza_Temperatura_Display(int temperatura, int max_s, int min_s)
 {
   //Apaga o display
@@ -91,12 +112,12 @@ void Atualiza_Temperatura_Display(int temperatura, int max_s, int min_s)
   display.drawLine(67, 40, 128, 40);
   display.setFont(ArialMT_Plain_10);
   display.setTextAlignment(TEXT_ALIGN_CENTER);
-  display.drawString(17, 2, "HexagonoGroup");
+  
 
   //Atualiza informacoes da temperatura
   display.setFont(ArialMT_Plain_10);
   display.setTextAlignment(TEXT_ALIGN_CENTER);
-  display.drawString(64, 2, "Termometro ESP8266");
+  display.drawString(64, 2, "Hexagono Group");
   display.setFont(ArialMT_Plain_24);
   display.drawString(32, 26, String(temperatura));
   display.drawCircle(52, 32, 2);
@@ -116,8 +137,7 @@ void Atualiza_Temperatura_Display(int temperatura, int max_s, int min_s)
   display.display();
 }
 
-void loop()
-{
+void loop() {
   unsigned long currentMillis = millis();
 
   //Verifica se o intervalo já foi atingido
@@ -128,7 +148,10 @@ void loop()
 
     //Le a temperatura
     t = dht.readTemperature();
-
+    
+    //Receber a variavel led do firebase
+    Firebase.pushFloat("temperature", t);
+   
     //Mostra a temperatura no Serial Monitor
     Serial.print(F("Temperatura: "));
     Serial.print(t);
@@ -141,7 +164,8 @@ void loop()
     //Envia as informacoes para o display
     Atualiza_Temperatura_Display(t, maxima, minima);
   }
-
-  server.handleClient();
-  MDNS.update();
+    
+    
+   server.handleClient();
+   MDNS.update();
 }
