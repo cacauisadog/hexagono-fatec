@@ -14,8 +14,8 @@ const char* ssid = STASSID;
 const char* password = STAPSK;
 
 //Dados do firebase
-#define FIREBASE_HOST "app-db-e1e6c.firebaseio.com"
-#define FIREBASE_AUTH "EoK7FY1kMA7DhyNJqgO9DzkXfavLcU31arqA1t3X"
+#define FIREBASE_HOST "HOST"
+#define FIREBASE_AUTH "FIREBASE_AUTH_KEY"
 
 ESP8266WebServer server(80);
 
