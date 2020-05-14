@@ -6,3 +6,4 @@ Repo that holds all code from the Hexágono team, from Fatec's 1st semester of t
 - Bárbara Port
 - Giovanni Santos
 - Adriele Martins
+- Levi Motta
