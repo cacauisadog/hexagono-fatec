@@ -8,14 +8,14 @@
 #include <FirebaseArduino.h>
 
 //Dados da rede wifi
-#define STASSID "FGJ" //coloca a ssid da sua net no lugar do SSID
-#define STAPSK  "16172225" //coloca a senha no lugar do password
+#define STASSID "STASSID" //coloca a ssid da sua net no lugar do SSID
+#define STAPSK  "STAPSK" //coloca a senha no lugar do password
 const char* ssid = STASSID;
 const char* password = STAPSK;
 
 //Dados do firebase
-#define FIREBASE_HOST "HOST"
-#define FIREBASE_AUTH "FIREBASE_AUTH_KEY"
+#define FIREBASE_HOST "seu FIREBASE_HOST"
+#define FIREBASE_AUTH "seu FIREBASE_AUTH"
 
 ESP8266WebServer server(80);
 
@@ -30,8 +30,9 @@ SSD1306Wire  display(0x3c, 2, 14);
 
 int minima = 99;
 int maxima = 0;
-int t;
-
+int t; //temperatura
+int h; //humidade
+ 
 DHT dht(DHTPIN, DHTTYPE);
 
 //Intervalo de tempo entre leituras
@@ -47,35 +48,21 @@ void setup()
   //Inicializa o Wifi
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
-  Serial.println("");
-
-  while (WiFi.status() != WL_CONNECTED){
-    delay(500);
-    Serial.print(".");
-  }
-  Serial.println("");
-  Serial.print("Conectado na rede ");
-  Serial.println(ssid);
-  Serial.print("Endereco IP: ");
-  Serial.println(WiFi.localIP());
-
-  if (MDNS.begin("esp8266")) {
-    Serial.println("MDNS responder started");
-  }
+  
   server.on("/", handleRoot);
 
   server.on("/inline", []() {
-    server.send(200, "text/plain", "this works as well");
+    server.send(200, "text/plain", "funcionando");
   });
 
   server.begin();
   Serial.println("HTTP server started");
 
-  //Inicializa o display Oled
+  //Iniciar display Oled
   display.init();
   display.flipScreenVertically();
 
-  //Inicializa o sensor de temperatura
+  //Iniciar sensor de temperatura
   dht.begin();
 
   //Iniciar Firebase
@@ -84,9 +71,13 @@ void setup()
 
 void handleRoot()
 {
-  server.send(200, "text/plain", "verificacao de temperatura em tempo real\n\nA temperatura atual e de " + String(t) + " graus\nA temperatura maxima foi de " + String(maxima) + " graus \ne a minima foi " + String(minima) + " graus");
+  server.send(200, "text/plain", "verificacao de temperatura em tempo real\n\nA temperatura atual e de " + String(t) + " graus\nA temperatura maxima foi de " + String(maxima) + " graus \ne a humidade é " + String(h) + " %");
 }
 void drawLines() {
+
+  //Apaga o display
+  display.clear();
+  
   for (int16_t i=0; i<display.getWidth(); i+=4) {
     display.drawLine(0, 0, i, display.getHeight()-1);
     display.display();
@@ -97,10 +88,11 @@ void drawLines() {
     display.display();
     delay(10);
   }
+  display.display();
   delay(250);
 }
   
-void Atualiza_Temperatura_Display(int temperatura, int max_s, int min_s)
+void Atualiza_Temperatura_Display(int temperatura, int h, int min_s)
 {
   //Apaga o display
   display.clear();
@@ -125,14 +117,14 @@ void Atualiza_Temperatura_Display(int temperatura, int max_s, int min_s)
   //Atualiza maxima e minima
   display.setTextAlignment(TEXT_ALIGN_LEFT);
   display.setFont(ArialMT_Plain_10);
-  display.drawString(73, 24, "Max");
+  display.drawString(73, 24, "hum        %");
   display.setFont(ArialMT_Plain_16);
-  display.drawString(101, 19, String(max_s));
+  display.drawString(97, 19, String(h));
 
   display.setFont(ArialMT_Plain_10);
   display.drawString(73, 48, "Min");
   display.setFont(ArialMT_Plain_16);
-  display.drawString(101, 43, String(min_s));
+  display.drawString(97, 43, String(min_s));
 
   display.display();
 }
@@ -148,21 +140,26 @@ void loop() {
 
     //Le a temperatura
     t = dht.readTemperature();
+
+    //Le a humidade
+    float h = dht.readHumidity();
     
-    //Receber a variavel led do firebase
+    //Receber a variavel t do firebase
     Firebase.pushFloat("temperature", t);
+
+    //Receber a variavel h do firebase
+    Firebase.pushFloat("humidity", h);
    
     //Mostra a temperatura no Serial Monitor
     Serial.print(F("Temperatura: "));
     Serial.print(t);
     Serial.println(F("°C "));
 
-    //Atualiza as variaveis maxima e minima, se necessario
-    if (t >= maxima){maxima = t;}
+    //Atualiza a variavel maxima, se necessario
     if (t <= minima){minima = t;}
 
     //Envia as informacoes para o display
-    Atualiza_Temperatura_Display(t, maxima, minima);
+    Atualiza_Temperatura_Display(t, h, minima);
   }
     
     
