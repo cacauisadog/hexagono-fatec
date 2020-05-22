@@ -106,13 +106,13 @@ class SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin<Si
                       SizedBox(height: 100,),
                       ListTile(
                         title: Text(
-                          "Usuário",
+                          "User",
                           style: TextStyle(color: Colors.white,
                           fontSize: 30,
                           fontWeight: FontWeight.w800),
                         ),
                         subtitle: Text(
-                          "usuario@outlook.com",
+                          "user@outlook.com",
                           style: TextStyle(color: Colors.white60,
                           fontSize: 18,
                           fontWeight: FontWeight.w800),

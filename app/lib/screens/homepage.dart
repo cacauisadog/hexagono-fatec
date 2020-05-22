@@ -2,16 +2,16 @@ import 'package:app/screens/sidebar/sidebar.dart';
 import 'package:flutter/material.dart';
 import 'package:app/utilities/api/api.dart' as api;
 
-class HomepageBody extends StatelessWidget {
+class HomepageBody extends StatelessWidget { //aqui é o corpo da home page
   @override
   Widget build(BuildContext context) {
-    return Stack(children: <Widget>[
+    return Container( //a caixinha que guarda todas as coisas da homepage
+      height: double.infinity,
+      width: double.infinity,
 
-      Container(
-        height: double.infinity,
-        width: double.infinity,
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
+      decoration: BoxDecoration( //gradiente do fundo da página
+
+        gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
@@ -20,21 +20,27 @@ class HomepageBody extends StatelessWidget {
             Color(0xFF000000),
           ],
           stops: [0.1, 0.7, 0.9],
-        )),
-      ),
+        )
 
-      Container(
+      ),
+        
+      child: Container( //um outro container pras coisas não ficarem desconectadas e assimétricas
+
         height: double.infinity,
         child: SingleChildScrollView(
+
           physics: AlwaysScrollableScrollPhysics(),
+
           padding: EdgeInsets.symmetric(
             horizontal: 40,
             vertical: 68,
           ),
-          child: Column(
+
+          child: Column( //uma coluna no centro pra alinhar as coisas
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Center(
+
+              Center( //o texto 'home page!'. isso pode sair em breve
                 child: Text(
                   'Home page!',
                   style: TextStyle(
@@ -45,80 +51,75 @@ class HomepageBody extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                height: double.infinity,
-                child: SingleChildScrollView(
-                  physics: AlwaysScrollableScrollPhysics(),
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 68,
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Center (
-                        child: Text(
-                          'Home page!',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'OpenSans',
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                          ),
+
+              Container( //esse é o container da caixa da temperatura
+
+                child: Column( //coluninha pra alinhar no centro né :)
+
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+
+                    Container( //esse daqui é o retângulo de bordas arredondadas
+                      alignment: Alignment.centerLeft,
+                      margin: const EdgeInsets.all(10.0),
+                      width: 800.0,
+                      height: 120.0,
+
+                      decoration: BoxDecoration( //isso daqui faz ter cor de fundo e arredondar as bordas
+                        color: Colors.white,
+
+                        borderRadius: BorderRadius.only(
+                          topLeft: const Radius.circular(20.0),
+                          topRight: const Radius.circular(20.0),
+                          bottomLeft: const Radius.circular(20.0),
+                          bottomRight: const Radius.circular(20.0),
+                        )
+
+                      ),
+
+                      child: Text( //o texto da temperatura, que pode ser escrito com outro design pra ficar muito mais bonito
+                        'Temperature: ',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontFamily: 'OpenSans',
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Center(
-                        child: Container(
-                          alignment: Alignment.centerLeft,
-                          margin: const EdgeInsets.all(10.0),
-                          width: 800.0,
-                          height: 120.0,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.only(
-                                topLeft: const Radius.circular(20.0),
-                                topRight: const Radius.circular(20.0),
-                                bottomLeft: const Radius.circular(20.0),
-                                bottomRight: const Radius.circular(20.0),
-                              )
-                            ),
-                          child: Text(
-                            'Temperature: ',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontFamily: 'OpenSans',
-                              fontSize: 40,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
+
+                    ),
+                      
+                    Container( //esse é o botão de chamar a API :)
+                      child: RaisedButton(
+                        child: Text('Chama API'),
+                        onPressed: () => api.getTemperature()
                       ),
-                      Container(
-                        child: RaisedButton(
-                          child: Text('Chama API'),
-                          onPressed: () => api.getTemperature()
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              ),
+                    ),
+                  ],
+                ),
+              )
             ]
           ),
         ),
       ),
-    ]);
+    );
   }
 }
 
+
+//aqui embaixo tem duas classes: a homepageBody() e a Sidebar(). tive que fazer isso porque
+//senão o sidebar não iria sobrepor a página
 class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(children: <Widget>[
-        HomepageBody(),
-        Sidebar(),
+    return Scaffold( //o scaffold faz o app deixar a barra de notificação da cor do app (foi a diferença que mais notei)
+
+      body: Stack(children: <Widget>[ //o stack possibilita ter camadas. no nosso caso uma pro homepageBody e outra pro menu (sobreposição)
+        HomepageBody(), //o que é chamado primeiro fica embaixo
+        Sidebar(), //o que é chamado depois fica por cima
       ]),
+
     );
+
   }
 }
