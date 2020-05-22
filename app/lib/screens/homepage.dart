@@ -1,68 +1,67 @@
 import 'package:app/screens/sidebar/sidebar.dart';
 import 'package:flutter/material.dart';
+import 'package:app/utilities/api/api.dart' as api;
 
 class HomepageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Stack (
-      children: <Widget>[
-        Container(
-          height: double.infinity,
-          width: double.infinity,
-          decoration: BoxDecoration(
+    return Stack(children: <Widget>[
+      Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: BoxDecoration(
             gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter, 
-              colors: [
-                Color(0xDD000000),
-                Color(0xFF000000),
-                Color(0xFF000000),              
-              ],
-              stops: [0.1, 0.7, 0.9],)
-            ),
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color(0xDD000000),
+            Color(0xFF000000),
+            Color(0xFF000000),
+          ],
+          stops: [0.1, 0.7, 0.9],
+        )),
+      ),
+      Container(
+        height: double.infinity,
+        child: SingleChildScrollView(
+          physics: AlwaysScrollableScrollPhysics(),
+          padding: EdgeInsets.symmetric(
+            horizontal: 40,
+            vertical: 68,
           ),
-          Container(
-            height: double.infinity,
-            child: SingleChildScrollView(
-              physics: AlwaysScrollableScrollPhysics(),
-              padding: EdgeInsets.symmetric(
-                horizontal: 40,
-                vertical: 68,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Center (
-                    child: Text(
-                      'Home page!',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'OpenSans',
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Center(
+                child: Text(
+                  'Home page!',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'OpenSans',
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
                   ),
-                ],
+                ),
               ),
-            ),
+              RaisedButton(
+                  child: Text('Chama API'),
+                  onPressed: () => api.getTemperature())
+            ],
           ),
-      ]
-    );
+        ),
+      ),
+    ]);
   }
 }
 
 class Homepage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-          children: <Widget>[
-            HomepageBody(),
-            Sidebar(),
-          ]
-        ),
+      body: Stack(children: <Widget>[
+        HomepageBody(),
+        Sidebar(),
+      ]),
     );
   }
 }
