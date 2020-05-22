@@ -6,6 +6,7 @@ class HomepageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(children: <Widget>[
+
       Container(
         height: double.infinity,
         width: double.infinity,
@@ -21,6 +22,7 @@ class HomepageBody extends StatelessWidget {
           stops: [0.1, 0.7, 0.9],
         )),
       ),
+
       Container(
         height: double.infinity,
         child: SingleChildScrollView(
@@ -43,10 +45,65 @@ class HomepageBody extends StatelessWidget {
                   ),
                 ),
               ),
-              RaisedButton(
-                  child: Text('Chama API'),
-                  onPressed: () => api.getTemperature())
-            ],
+              Container(
+                height: double.infinity,
+                child: SingleChildScrollView(
+                  physics: AlwaysScrollableScrollPhysics(),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 68,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Center (
+                        child: Text(
+                          'Home page!',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'OpenSans',
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      Center(
+                        child: Container(
+                          alignment: Alignment.centerLeft,
+                          margin: const EdgeInsets.all(10.0),
+                          width: 800.0,
+                          height: 120.0,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.only(
+                                topLeft: const Radius.circular(20.0),
+                                topRight: const Radius.circular(20.0),
+                                bottomLeft: const Radius.circular(20.0),
+                                bottomRight: const Radius.circular(20.0),
+                              )
+                            ),
+                          child: Text(
+                            'Temperature: ',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: 'OpenSans',
+                              fontSize: 40,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        child: RaisedButton(
+                          child: Text('Chama API'),
+                          onPressed: () => api.getTemperature()
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ),
+            ]
           ),
         ),
       ),

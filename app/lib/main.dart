@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
           ],
+          debugShowCheckedModeBanner: false,
           home: LoginScreen(),
         );
       }),

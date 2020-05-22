@@ -17,7 +17,7 @@ Widget selectLanguage() => Container(
         ),
       ),
       PopupMenuItem(
-        value: 1,
+        value: 2,
         child: GestureDetector(
           onTap: () {
             appLanguage.changeLanguage(Locale('pt'));
