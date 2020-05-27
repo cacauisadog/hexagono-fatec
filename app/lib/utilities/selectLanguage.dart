@@ -4,7 +4,7 @@ import 'package:app/main.dart';
 //Botão para mudar o idioma do app
 
 Widget selectLanguage() => Container(
-  alignment: Alignment.bottomLeft,
+  alignment: Alignment.bottomCenter,
   child: PopupMenuButton<int>(
     itemBuilder: (context) => [
       PopupMenuItem(

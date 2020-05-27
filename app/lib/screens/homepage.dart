@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:app/utilities/api/api.dart' as api;
 
 class HomepageBody extends StatelessWidget { //aqui é o corpo da home page
+
+  final Future<api.Temp> temp;
+
+  const HomepageBody({Key key, this.temp}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container( //a caixinha que guarda todas as coisas da homepage
@@ -77,25 +82,33 @@ class HomepageBody extends StatelessWidget { //aqui é o corpo da home page
 
                       ),
 
-                      child: Text( //o texto da temperatura, que pode ser escrito com outro design pra ficar muito mais bonito
-                        'Temperature: ',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontFamily: 'OpenSans',
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      child: FutureBuilder<api.Temp>(
+                        future: api.fetchPost(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text( //o texto da temperatura, que pode ser escrito com outro design pra ficar muito mais bonito
+                                'Temperature: '+ snapshot.data.temperature.toString(),
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: 'OpenSans',
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
 
-                    ),
-                      
-                    Container( //esse é o botão de chamar a API :)
-                      child: RaisedButton(
-                        child: Text('Chama API'),
-                        onPressed: () => api.getTemperature()
-                      ),
-                    ),
-                  ],
+                            );
+                          }
+                          else if (snapshot.hasError) {
+                            return Text("${snapshot.error}");
+                          }
+                          return CircularProgressIndicator();
+                        }
+                      )
+                  
+                    )
+                  ]
                 ),
               )
             ]

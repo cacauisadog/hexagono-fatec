@@ -103,7 +103,7 @@ class SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin<Si
                   color: const Color(0xDD000000).withOpacity(1.0),
                   child: Column(
                     children: <Widget>[
-                      SizedBox(height: 100,),
+                      SizedBox(height: 100),
                       ListTile(
                         title: Text(
                           "User",
