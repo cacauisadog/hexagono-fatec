@@ -1,11 +1,10 @@
 import 'dart:async';
-
 import 'package:app/screens/account.dart';
 import 'package:app/screens/homepage.dart';
 import 'package:app/screens/login.dart';
 import 'package:app/screens/notifications.dart';
 import 'package:app/screens/settings.dart';
-
+import 'package:app/utilities/api/sign-in.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:app/screens/sidebar/menu_item.dart';
@@ -101,6 +100,7 @@ class SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin<Si
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   color: const Color(0xDD000000).withOpacity(1.0),
+                  
                   child: Column(
                     children: <Widget>[
                       SizedBox(height: 100),
@@ -118,11 +118,10 @@ class SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin<Si
                           fontWeight: FontWeight.w800),
                         ),
                         leading: CircleAvatar(
-                        child: Icon(
-                            Icons.perm_identity,
-                            color: Colors.white,
-                          ),
-                          radius: 40,
+                          // child: Image.network(
+                          //   ,
+                          // ),
+                        radius: 40,
                         ),
                       ),
                       Divider(
@@ -162,7 +161,15 @@ class SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin<Si
                       MenuItem(
                         icon: Icons.exit_to_app,
                         title: "Log out",
-                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()),),
+                        onTap: () => signOutGoogle().whenComplete((){
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return LoginScreen();
+                              }
+                            ),
+                          );
+                        }),
                       ), 
                     ],
                   ),
