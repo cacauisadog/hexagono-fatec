@@ -61,7 +61,6 @@ class HomepageBody extends StatelessWidget {
 
                   child: Column(
                       //coluninha pra alinhar no centro né :)
-
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Container(
@@ -83,13 +82,14 @@ class HomepageBody extends StatelessWidget {
                                 future: api.getLastTemperature(),
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
+                                    //se conseguiu achar dados para exibir
                                     return Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
                                         //o texto da temperatura, que pode ser escrito com outro design pra ficar muito mais bonito
-                                        'Temperature: ' +
+                                        'Temperature:\n' +
                                             snapshot.data
-                                                .toString(), //como agora tô passando diretamente o valor da temperatura, apenas o converto direto pra String
+                                                .toString()+'ºC', //como agora tô passando diretamente o valor da temperatura, apenas o converto direto pra String
                                         style: TextStyle(
                                           color: Colors.black,
                                           fontFamily: 'OpenSans',
@@ -104,7 +104,45 @@ class HomepageBody extends StatelessWidget {
                                   return CircularProgressIndicator();
                                 }))
                       ]),
-                )
+                ),
+                Container(
+                    //esse daqui é o retângulo de bordas arredondadas (de novo)
+                    alignment: Alignment.centerLeft,
+                    margin: const EdgeInsets.all(10.0),
+                    width: 800.0,
+                    height: 120.0,
+                    decoration: BoxDecoration(
+                        //isso daqui faz ter cor de fundo e arredondar as bordas
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topLeft: const Radius.circular(20.0),
+                          topRight: const Radius.circular(20.0),
+                          bottomLeft: const Radius.circular(20.0),
+                          bottomRight: const Radius.circular(20.0),
+                        )),
+                    child: FutureBuilder(
+                        future: api.getLastHumidity(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            //se conseguiu achar dados para exibir
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                //o texto da umidade, que pode ser escrito com outro design pra ficar muito mais bonito
+                                'Humidity:\n' + snapshot.data.toString()+'g/Kg', //como agora tô passando diretamente o valor da umidade, apenas o converto direto pra String
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: 'OpenSans',
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            );
+                          } else if (snapshot.hasError) {
+                            return Text("${snapshot.error}");
+                          }
+                          return CircularProgressIndicator();
+                        }))
               ]),
         ),
       ),
