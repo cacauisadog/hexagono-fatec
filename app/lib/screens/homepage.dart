@@ -101,7 +101,7 @@ class HomepageBody extends StatelessWidget {
                                   } else if (snapshot.hasError) {
                                     return Text("${snapshot.error}");
                                   }
-                                  return CircularProgressIndicator();
+                                  return Center(child: CircularProgressIndicator());
                                 }))
                       ]),
                 ),
@@ -129,7 +129,7 @@ class HomepageBody extends StatelessWidget {
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
                                 //o texto da umidade, que pode ser escrito com outro design pra ficar muito mais bonito
-                                'Humidity:\n' + snapshot.data.toString()+'g/Kg', //como agora tô passando diretamente o valor da umidade, apenas o converto direto pra String
+                                'Humidity:\n' + snapshot.data.toString()+'%', //como agora tô passando diretamente o valor da umidade, apenas o converto direto pra String
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontFamily: 'OpenSans',
@@ -141,7 +141,7 @@ class HomepageBody extends StatelessWidget {
                           } else if (snapshot.hasError) {
                             return Text("${snapshot.error}");
                           }
-                          return CircularProgressIndicator();
+                          return Center(child: CircularProgressIndicator());
                         }))
               ]),
         ),

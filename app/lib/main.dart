@@ -1,4 +1,7 @@
 import 'package:app/core/internationalization/app_language.dart';
+import 'package:app/screens/homepage.dart';
+import 'package:app/utilities/api/sign-in.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:app/screens/login.dart';
 import 'package:app/core/internationalization/app_localizations.dart';
@@ -42,7 +45,17 @@ class MyApp extends StatelessWidget {
             GlobalWidgetsLocalizations.delegate,
           ],
           debugShowCheckedModeBanner: false,
-          home: LoginScreen(),
+          home: FutureBuilder( //verificação se o usuário já está logado no app p/ não ir para a tela de login
+            future: signInWithGoogle(),
+            builder: (context, snapshot){
+              if(snapshot.hasData){
+                return Homepage(); //se houver dados salvos, ela vai direto para a homepage
+              }
+              else {
+                return LoginScreen(); //se não houver dados salvas, ela vai para o login
+              }
+            },
+          ),
         );
       }),
     );
