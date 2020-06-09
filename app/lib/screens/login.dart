@@ -21,11 +21,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 return Homepage();
               }
             ),
+          );   
+        });Image(image: AssetImage('assets/tempverifylogo.png'), height: 75.0);
+        Container(
+              alignment: Alignment.centerLeft,
+                  margin: const EdgeInsets.all(10.0),
+                  width: 800.0,
+                  height: 50.0,
           );
-        });
-      },
+      },      
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(40.0)
+        
+        borderRadius: BorderRadius.circular(30.0)
       ),
       highlightElevation: 0,
       borderSide: BorderSide(
@@ -35,9 +42,10 @@ class _LoginScreenState extends State<LoginScreen> {
         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
         child: Row(
           mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center, 
           children: <Widget> [
-            Image(image: AssetImage('assets/google_logo.png'), height: 35.0),
+            
+            Image(image: AssetImage('assets/google_logo.png'), height: 35.0),       
             Padding(
               padding: const EdgeInsets.only(left: 10),
               child: Text(
@@ -48,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-            ),
+            ),                  
           ],
         ),
       ),
@@ -99,7 +107,25 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 30.0),
                   _buildLoginGoogleBtn(),
                   selectLanguage(),
-
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    margin: const EdgeInsets.all(10.0),
+                    width: 800.0,
+                    height: 270.0,
+                  ),
+                       Center(
+                  //o texto 'home page!'. isso pode sair em breve
+                  child: Text(
+                    'TempVerify, created by Hexagonogroup',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'OpenSans',
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                  Image(image: AssetImage('assets/HEXGR.png'), height: 75.0),  
                 ],
               ),
             ),

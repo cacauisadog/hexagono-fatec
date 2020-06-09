@@ -58,6 +58,7 @@ class HomepageBody extends StatelessWidget {
                 ),
                 Container(
                   //esse é o container da caixa da temperatura
+                  
 
                   child: Column(
                       //coluninha pra alinhar no centro né :)
@@ -74,8 +75,8 @@ class HomepageBody extends StatelessWidget {
                                 color: Colors.white,
                                 borderRadius: BorderRadius.only(
                                   topLeft: const Radius.circular(20.0),
-                                  topRight: const Radius.circular(20.0),
-                                  bottomLeft: const Radius.circular(20.0),
+                                  topRight: const Radius.circular(0.0),
+                                  bottomLeft: const Radius.circular(0.0),
                                   bottomRight: const Radius.circular(20.0),
                                 )),
                             child: FutureBuilder(
@@ -116,8 +117,8 @@ class HomepageBody extends StatelessWidget {
                         color: Colors.white,
                         borderRadius: BorderRadius.only(
                           topLeft: const Radius.circular(20.0),
-                          topRight: const Radius.circular(20.0),
-                          bottomLeft: const Radius.circular(20.0),
+                          topRight: const Radius.circular(0.0),
+                          bottomLeft: const Radius.circular(0.0),
                           bottomRight: const Radius.circular(20.0),
                         )),
                     child: FutureBuilder(
