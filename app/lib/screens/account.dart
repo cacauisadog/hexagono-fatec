@@ -47,6 +47,26 @@ class MyAccountBody extends StatelessWidget {
               ),
             ),
           ),
+          Container(
+            padding: EdgeInsets.only(top: 150, left: 40, right: 40),
+            child: ListView(
+              children: <Widget>[
+                SizedBox(
+                  width:128,
+                  height:128,
+                  child:Image.asset("assets/avatar.png"),
+                ),
+                Center(
+                  child: Text( 
+                    'user@outlook.com',
+                    style: TextStyle(color: Colors.white,
+                    fontSize: 25,
+                    )
+                  )
+                )
+              ]
+            )
+          )
       ]
     );
   }
