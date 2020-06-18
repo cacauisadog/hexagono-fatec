@@ -1,7 +1,6 @@
 import 'package:app/core/internationalization/app_language.dart';
 import 'package:app/screens/homepage.dart';
 import 'package:app/utilities/api/sign-in.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:app/screens/login.dart';
 import 'package:app/core/internationalization/app_localizations.dart';

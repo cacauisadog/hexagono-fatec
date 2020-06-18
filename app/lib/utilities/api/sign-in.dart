@@ -28,3 +28,12 @@ Future<String> signInWithGoogle() async { //estrutura do login. muitas coisas n�
 signOutGoogle() async { //Log out do usuário
   await googleSignIn.signOut();
 }
+
+Future<dynamic> getUserData() async { //pegando o nome do usuário lá do firebase
+  String displayName = (await _auth.currentUser()).displayName;
+  String email = (await _auth.currentUser()).email;
+  String photo = (await _auth.currentUser()).photoUrl;
+  var date = (await _auth.currentUser()).metadata.creationTime;
+  List data = [displayName, email, photo, date]; //não se dá return em três variáveis. então fiz uma lista
+  return data;
+}

@@ -22,7 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
               }
             ),
           );   
-        });Image(image: AssetImage('assets/tempverifylogo.png'), height: 75.0);
+        });
         Container(
               alignment: Alignment.centerLeft,
                   margin: const EdgeInsets.all(10.0),
@@ -44,7 +44,6 @@ class _LoginScreenState extends State<LoginScreen> {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center, 
           children: <Widget> [
-            
             Image(image: AssetImage('assets/google_logo.png'), height: 35.0),       
             Padding(
               padding: const EdgeInsets.only(left: 10),
@@ -86,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
           Container(
             height: double.infinity,
             child: SingleChildScrollView(
-              physics: AlwaysScrollableScrollPhysics(),
+              physics: NeverScrollableScrollPhysics(),
               padding: EdgeInsets.symmetric(
                 horizontal: 40.0,
                 vertical: 120.0,
@@ -94,16 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  // Text(
-                  //   AppLocalizations.of(context).translate('Sign in'),
-                  //   style: TextStyle(
-                  //     color: Colors.white,
-                  //     fontFamily: 'OpenSans',
-                  //     fontSize: 40.0,
-                  //     fontWeight: FontWeight.bold,
-                  //   ),
-                  // ),
-                  //Image(image: AssetImage('assets/app_logo.png'), height: 100, width: 100),
+                  Image(image: AssetImage('assets/tempverifylogo.png'), height: 100, width: 100,),
                   SizedBox(height: 30.0),
                   _buildLoginGoogleBtn(),
                   selectLanguage(),
@@ -114,7 +104,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 270.0,
                   ),
                        Center(
-                  //o texto 'home page!'. isso pode sair em breve
                   child: Text(
                     'TempVerify, created by Hexagonogroup',
                     style: TextStyle(
