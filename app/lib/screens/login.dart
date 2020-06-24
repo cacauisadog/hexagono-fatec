@@ -110,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     alignment: Alignment.centerLeft,
                     margin: const EdgeInsets.all(10.0),
                     width: 800.0,
-                    height: 270.0,
+                    height: 150.0,
                   ),
                        Center(
                   child: Text(

@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:app/screens/account.dart';
 import 'package:app/screens/homepage.dart';
 import 'package:app/screens/login.dart';
-import 'package:app/screens/notifications.dart';
+import 'package:app/screens/connectwifi.dart';
 import 'package:app/screens/settings.dart';
 import 'package:app/utilities/api/sign-in.dart';
 import 'package:flutter/material.dart';
@@ -170,12 +170,11 @@ class SidebarState extends State<Sidebar>
                         ),
                       ),
                       MenuItem(
-                        icon: Icons.notifications,
-                        title: "Notifications",
+                        icon: Icons.wifi,
+                        title: "ConnectWifi",
                         onTap: () => Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => Notifications()),
+                          MaterialPageRoute(builder: (context) => ConnectWiFi()),
                         ),
                       ),
                       MenuItem(

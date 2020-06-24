@@ -1,7 +1,7 @@
 import 'package:app/screens/sidebar/sidebar.dart';
 import 'package:flutter/material.dart';
 
-class NotificationsBody extends StatelessWidget {
+class ConnectWiFiBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack (
@@ -34,7 +34,7 @@ class NotificationsBody extends StatelessWidget {
                 children: <Widget>[
                   Center (
                     child: Text(
-                      'Notifications!',
+                      'Connect in your network',
                       style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'OpenSans',
@@ -52,14 +52,14 @@ class NotificationsBody extends StatelessWidget {
   }
 }
 
-class Notifications extends StatelessWidget {
+class ConnectWiFi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
           children: <Widget>[
-            NotificationsBody(),
+            ConnectWiFiBody(),
             Sidebar(),
           ]
         ),
