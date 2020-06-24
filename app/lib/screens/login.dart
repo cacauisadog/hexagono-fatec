@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:app/screens/HomePage.dart';
 import 'package:app/utilities/selectLanguage.dart';
 import 'package:app/utilities/api/sign-in.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -9,6 +10,14 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
+  final FirebaseMessaging _messaging = FirebaseMessaging();
+
+  @override
+  void initState(){
+    super.initState();
+    _messaging.getToken().then((token) => print(token));
+  }
 
   Widget _buildLoginGoogleBtn() {
     return OutlineButton(
