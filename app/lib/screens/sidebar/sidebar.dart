@@ -147,9 +147,9 @@ class SidebarState extends State<Sidebar>
                                     fontWeight: FontWeight.w800),
                               ),
                               leading: CircleAvatar(
-                                // child: Image.network(
-                                //   ,
-                                // ),
+                                child: Image.asset(
+                                    'assets/avatar.png',
+                                ),
                                 radius: 40,
                               ),
                             );

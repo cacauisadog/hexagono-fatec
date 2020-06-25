@@ -27,7 +27,7 @@ Future<String> signInWithGoogle() async { //estrutura do login. muitas coisas n�
 
 signOutGoogle() async { //Log out do usuário
   await googleSignIn.signOut();
-}
+} 
 
 Future<dynamic> getUserData() async { //pegando o nome do usuário lá do firebase
   String displayName = (await _auth.currentUser()).displayName;

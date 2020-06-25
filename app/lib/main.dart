@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:app/screens/login.dart';
 import 'package:app/core/internationalization/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:provider/provider.dart';
 
 AppLanguage appLanguage = AppLanguage();
@@ -29,6 +30,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    OneSignal.shared.init('4e00ece4-3802-4c60-b83c-314b3d74ace2');
+
     return ChangeNotifierProvider<AppLanguage>(
       create: (_) => appLanguage,
       child: Consumer<AppLanguage>(builder: (context, model, child) {
