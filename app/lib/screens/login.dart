@@ -24,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
         Container(
           alignment: Alignment.centerLeft,
           margin: const EdgeInsets.all(10.0),
-          width: 800.0,
+          width: 950.0,
           height: 50.0,
         );
       },
@@ -83,23 +83,23 @@ class _LoginScreenState extends State<LoginScreen> {
               physics: NeverScrollableScrollPhysics(),
               padding: EdgeInsets.symmetric(
                 horizontal: 40.0,
-                vertical: 120.0,
+                vertical: 180.0,
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Image(
                     image: AssetImage('assets/tempverifylogo.png'),
-                    height: 200,
-                    width: 200,
+                    height: 100,
+                    width: 100,
                   ),
-                  SizedBox(height: 60.0),
+                  SizedBox(height: 50.0),
                   _buildLoginGoogleBtn(),
                   selectLanguage(),
-                  SizedBox(height: 130.0),
+                  SizedBox(height: 120.0),
                   Center(
                     child: Text(
-                      'TempVerify, created by Hexagonogroup',
+                      'TempVerify, created by',
                       style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'OpenSans',
@@ -108,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  Image(image: AssetImage('assets/HEXGR.png'), height: 75.0),
+                  Image(image: AssetImage('assets/HEXGR.png'), height: 65.0),
                 ],
               ),
             ),
