@@ -33,120 +33,111 @@ class MyAccountBody extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Center(
-                child: Text(
-                  'My account!',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'OpenSans',
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              FutureBuilder<dynamic>(
-                  //pegando a lista que dei return lá no sign-in.dart
-                  future: getUserData(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      return Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Container(
-                            alignment: Alignment.center,
-                            margin: const EdgeInsets.all(10.0),
-                            width: 800.0,
-                            height: 120.0,
-                            child: CircleAvatar(
-                              child: Image.network(
-                                  snapshot.data[2]), //index 2 -> foto
-                              radius: 40,
-                            ),
-                          ),
-                          Container(
-                            alignment: Alignment.topCenter,
-                            margin: const EdgeInsets.all(10.0),
-                            child: Text(
-                              snapshot.data[0], // index 0 -> nome
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: 'OpenSans',
-                                fontSize: 40,
-                                fontWeight: FontWeight.bold,
+                child: FutureBuilder<dynamic>(
+                    //pegando a lista que dei return lá no sign-in.dart
+                    future: getUserData(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Container(
+                              alignment: Alignment.center,
+                              margin: const EdgeInsets.all(10.0),
+                              width: 800.0,
+                              height: 120.0,
+                              child: ClipRRect(
+                                child: Image.network(
+                                    snapshot.data[2]), //index 2 -> foto
+                                borderRadius: BorderRadius.circular(50),
                               ),
                             ),
-                          ),
-                          Container(
-                            alignment: Alignment.center,
-                            child: Text(
-                              snapshot.data[1], // index 1 -> email
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: 'OpenSans',
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
+                            Container(
+                              alignment: Alignment.topCenter,
+                              margin: const EdgeInsets.all(10.0),
+                              child: Text(
+                                snapshot.data[0], // index 0 -> nome
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'OpenSans',
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
-                          ),
-                          Container(
-                            alignment: Alignment.center,
-                            margin: const EdgeInsets.all(10.0),
-                            child: Text(
-                              'Creation date: ' +
-                                  snapshot.data[3]
-                                      .toString(), // index 3 -> data de criação da conta (tá meio difícil de entender)
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: 'OpenSans',
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
+                            Container(
+                              alignment: Alignment.center,
+                              child: Text(
+                                snapshot.data[1], // index 1 -> email
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'OpenSans',
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
-                      );
-                    } else {
-                      return Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Container(
-                            alignment: Alignment.center,
-                            margin: const EdgeInsets.all(10.0),
-                            width: 800.0,
-                            height: 120.0,
-                            child: CircleAvatar(
-                              child: Image.asset('assets/avatar.png'),
-                              radius: 40,
-                            ),
-                          ),
-                          Container(
-                            alignment: Alignment.topCenter,
-                            margin: const EdgeInsets.all(10.0),
-                            child: Text(
-                              'User',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: 'OpenSans',
-                                fontSize: 40,
-                                fontWeight: FontWeight.bold,
+                            // Container(
+                            //   alignment: Alignment.center,
+                            //   margin: const EdgeInsets.all(10.0),
+                            //   child: Text(
+                            //     'Creation date: ' +
+                            //         snapshot.data[3]
+                            //             .toString(), // index 3 -> data de criação da conta (tá meio difícil de entender)
+                            //     style: TextStyle(
+                            //       color: Colors.white,
+                            //       fontFamily: 'OpenSans',
+                            //       fontSize: 20,
+                            //       fontWeight: FontWeight.bold,
+                            //     ),
+                            //   ),
+                            // ),
+                          ],
+                        );
+                      } else {
+                        return Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Container(
+                              alignment: Alignment.center,
+                              margin: const EdgeInsets.all(10.0),
+                              width: 800.0,
+                              height: 120.0,
+                              child: ClipRRect(
+                                child: Image.asset('assets/avatar.png'),
+                                borderRadius: BorderRadius.circular(50),
                               ),
                             ),
-                          ),
-                          Container(
-                            alignment: Alignment.center,
-                            child: Text(
-                              'user@email.com',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: 'OpenSans',
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
+                            Container(
+                              alignment: Alignment.topCenter,
+                              margin: const EdgeInsets.all(10.0),
+                              child: Text(
+                                'User',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'OpenSans',
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
-                      );
-                    }
-                  }),
+                            Container(
+                              alignment: Alignment.center,
+                              child: Text(
+                                'user@email.com',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'OpenSans',
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        );
+                      }
+                    }),
+              )
             ],
           ),
         ),

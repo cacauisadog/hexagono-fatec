@@ -1,6 +1,6 @@
-# app
+# TempVerify
 
-A new Flutter project.
+A Flutter project that verifies and notifies the user about the temperature and humidity of a room.
 
 ## Getting Started
 

@@ -20,11 +20,8 @@ dependencies:
   flutter_launcher_icons: ^0.7.5
   flutter:
     sdk: flutter
-  flutter_localizations:
-    sdk: flutter
   flutter_modular: ^1.1.2
   provider: ^3.1.0
-  shared_preferences: ^0.5.3+4
   cloud_firestore: ^0.13.7
   http: ^0.12.1
   firebase_auth: ^0.16.1
@@ -58,8 +55,6 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - lang/en.json
-    - lang/pt.json
     - assets/google_logo.png
     - assets/hex fb.png
     - assets/HEXGR.png

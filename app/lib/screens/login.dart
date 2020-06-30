@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:app/screens/HomePage.dart';
-import 'package:app/utilities/selectLanguage.dart';
 import 'package:app/utilities/api/sign-in.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -9,7 +8,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
   Widget _buildLoginGoogleBtn() {
     return OutlineButton(
       splashColor: Colors.grey,
@@ -90,13 +88,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: <Widget>[
                   Image(
                     image: AssetImage('assets/tempverifylogo.png'),
-                    height: 100,
-                    width: 100,
+                    height: 150,
+                    width: 150,
                   ),
-                  SizedBox(height: 50.0),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.1),
                   _buildLoginGoogleBtn(),
-                  selectLanguage(),
-                  SizedBox(height: 120.0),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.2),
                   Center(
                     child: Text(
                       'TempVerify, created by',

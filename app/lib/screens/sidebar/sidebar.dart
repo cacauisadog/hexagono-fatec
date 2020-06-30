@@ -2,8 +2,6 @@ import 'dart:async';
 import 'package:app/screens/account.dart';
 import 'package:app/screens/homepage.dart';
 import 'package:app/screens/login.dart';
-import 'package:app/screens/connectwifi.dart';
-import 'package:app/screens/settings.dart';
 import 'package:app/utilities/api/sign-in.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
@@ -123,11 +121,11 @@ class SidebarState extends State<Sidebar>
                                       fontSize: 14,
                                       fontWeight: FontWeight.w800),
                                 ),
-                                leading: CircleAvatar(
+                                leading: ClipRRect(
                                   child: Image.network(
                                     snapshot.data[2], //index 2 -> foto
                                   ),
-                                  radius: 30,
+                                  borderRadius: BorderRadius.circular(50),
                                 ),
                               );
                             }
@@ -146,11 +144,11 @@ class SidebarState extends State<Sidebar>
                                     fontSize: 18,
                                     fontWeight: FontWeight.w800),
                               ),
-                              leading: CircleAvatar(
+                              leading: ClipRRect(
                                 child: Image.asset(
                                     'assets/avatar.png',
                                 ),
-                                radius: 40,
+                                borderRadius: BorderRadius.circular(50),
                               ),
                             );
                           }),
@@ -169,14 +167,14 @@ class SidebarState extends State<Sidebar>
                           MaterialPageRoute(builder: (context) => Homepage()),
                         ),
                       ),
-                      MenuItem(
-                        icon: Icons.wifi,
-                        title: "ConnectWifi",
-                        onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => ConnectWiFi()),
-                        ),
-                      ),
+                      // MenuItem(
+                      //   icon: Icons.wifi,
+                      //   title: "ConnectWifi",
+                      //   onTap: () => Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(builder: (context) => ConnectWiFi()),
+                      //   ),
+                      // ),
                       MenuItem(
                         icon: Icons.person,
                         title: "My account",
@@ -192,14 +190,14 @@ class SidebarState extends State<Sidebar>
                         indent: 32,
                         endIndent: 32,
                       ),
-                      MenuItem(
-                        icon: Icons.settings,
-                        title: "Settings",
-                        onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Settings()),
-                        ),
-                      ),
+                      // MenuItem(
+                      //   icon: Icons.settings,
+                      //   title: "Settings",
+                      //   onTap: () => Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(builder: (context) => Settings()),
+                      //   ),
+                      // ),
                       MenuItem(
                         icon: Icons.exit_to_app,
                         title: "Log out",
