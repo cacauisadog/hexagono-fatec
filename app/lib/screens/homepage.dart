@@ -20,10 +20,8 @@ class _HomepageBodyState extends State<HomepageBody> {
       //a caixinha que guarda todas as coisas da homepage
       height: double.infinity,
       width: double.infinity,
-
       decoration: BoxDecoration(
-          //gradiente do fundo da página
-
+        //gradiente do fundo da página
         gradient: LinearGradient(
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
@@ -33,11 +31,10 @@ class _HomepageBodyState extends State<HomepageBody> {
           Color(0xFF000000),
         ],
         stops: [0.1, 0.7, 0.9],
-      )),
-
+      )
+    ),
       child: Container(
         //um outro container pras coisas não ficarem desconectadas e assimétricas
-
         height: double.infinity,
         child: SingleChildScrollView(
           physics: AlwaysScrollableScrollPhysics(),
@@ -51,7 +48,6 @@ class _HomepageBodyState extends State<HomepageBody> {
               children: <Widget>[
                 Container(
                   //esse é o container da caixa da temperatura
-
                   child: Column(
                       //coluninha pra alinhar no centro né :)
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -166,7 +162,6 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       //o scaffold faz o app deixar a barra de notificação da cor do app (foi a diferença que mais notei)
-
       body: RefreshIndicator(
         //para eu poder atualizar a página
         child: Stack(children: <Widget>[

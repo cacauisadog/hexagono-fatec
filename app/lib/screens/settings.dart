@@ -1,7 +1,15 @@
 import 'package:app/screens/sidebar/sidebar.dart';
 import 'package:flutter/material.dart';
 
-class SettingsBody extends StatelessWidget {
+class SettingsBody extends StatefulWidget {
+  SettingsBody({Key key}) : super(key: key);
+
+  @override
+  _SettingsBodyState createState() => _SettingsBodyState();
+}
+class _SettingsBodyState extends State<SettingsBody> {
+  bool _ntf = false;
+
   @override
   Widget build(BuildContext context) {
     return Stack (
@@ -18,35 +26,52 @@ class SettingsBody extends StatelessWidget {
                 Color(0xFF000000),
                 Color(0xFF000000),              
               ],
-              stops: [0.1, 0.7, 0.9],)
-            ),
+              stops: [0.1, 0.7, 0.9],
+            )
           ),
-          Container(
-            height: double.infinity,
-            child: SingleChildScrollView(
-              physics: AlwaysScrollableScrollPhysics(),
-              padding: EdgeInsets.symmetric(
-                horizontal: 40,
-                vertical: 68,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Center (
-                    child: Text(
-                      'Settings!',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'OpenSans',
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                      ),
+        ),
+        Container(
+          height: double.infinity,
+          child: SingleChildScrollView(
+            physics: AlwaysScrollableScrollPhysics(),
+            padding: EdgeInsets.symmetric(
+              horizontal: 40,
+              vertical: 50,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(height:10.0),
+                Text(
+                  'Settings',
+                   style: TextStyle(
+                    fontSize: 40.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                SwitchListTile(
+                  activeColor: Colors.grey[200],
+                  contentPadding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 8.0),
+                  title: const Text(
+                    'Receive notifications',
+                    style: TextStyle(
+                      fontSize: 17.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
                   ),
-                ],
-              ),
+                  value: _ntf,
+                  onChanged: (bool value) {
+                    setState(() {
+                    _ntf = value;
+                    });
+                  },
+                ),
+              ],
             ),
           ),
+        )
       ]
     );
   }

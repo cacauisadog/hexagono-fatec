@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:app/screens/account.dart';
 import 'package:app/screens/homepage.dart';
 import 'package:app/screens/login.dart';
+import 'package:app/screens/settings.dart';
 import 'package:app/utilities/api/sign-in.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
@@ -183,6 +184,14 @@ class SidebarState extends State<Sidebar>
                           MaterialPageRoute(builder: (context) => MyAccount()),
                         ),
                       ),
+                      MenuItem(
+                         icon: Icons.settings,
+                         title: "Settings",
+                         onTap: () => Navigator.push(
+                           context,
+                           MaterialPageRoute(builder: (context) => Settings()),
+                         ),
+                       ),
                       Divider(
                         height: 64,
                         thickness: 0.5,
@@ -190,14 +199,6 @@ class SidebarState extends State<Sidebar>
                         indent: 32,
                         endIndent: 32,
                       ),
-                      // MenuItem(
-                      //   icon: Icons.settings,
-                      //   title: "Settings",
-                      //   onTap: () => Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(builder: (context) => Settings()),
-                      //   ),
-                      // ),
                       MenuItem(
                         icon: Icons.exit_to_app,
                         title: "Log out",

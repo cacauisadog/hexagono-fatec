@@ -10,16 +10,17 @@ class MyAccountBody extends StatelessWidget {
         height: double.infinity,
         width: double.infinity,
         decoration: BoxDecoration(
-            gradient: LinearGradient(
+          gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
             Color(0xDD000000),
             Color(0xFF000000),
             Color(0xFF000000),
-          ],
+            ],
           stops: [0.1, 0.7, 0.9],
-        )),
+          )
+        ),
       ),
       Container(
         height: double.infinity,
