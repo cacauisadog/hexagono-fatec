@@ -8,17 +8,16 @@
 #include <FirebaseArduino.h>
 
 //Dados da rede wifi
-#define STASSID "FGJ" //coloca a ssid da sua net no lugar do SSID
-#define STAPSK  "16172225" //coloca a senha no lugar do password
+#define STASSID "" //coloque a ssid da sua net no lugar do SSID
+#define STAPSK  "" //coloque a senha da sua net
 const char* ssid = STASSID;
 const char* password = STAPSK;
 int testeposi= 1;
 int testeneg= -1;
 
 //Dados do firebase
-#define FIREBASE_HOST "app-db-e1e6c.firebaseio.com"
-#define FIREBASE_AUTH "o8D0T8wpkHnLrGEHzaz3HVtN6igX8VHX8iWxTAlw"
-//SDqlBMd8jR9pwhpP4ShwzbaTfkAPg7Zsb00uVQ9k
+#define FIREBASE_HOST "" //link do bd
+#define FIREBASE_AUTH "" //chave secreta do bd
 ESP8266WebServer server(80);
 
 //Pino de ligacao do DHT11

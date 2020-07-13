@@ -78,21 +78,6 @@ class MyAccountBody extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            // Container(
-                            //   alignment: Alignment.center,
-                            //   margin: const EdgeInsets.all(10.0),
-                            //   child: Text(
-                            //     'Creation date: ' +
-                            //         snapshot.data[3]
-                            //             .toString(), // index 3 -> data de criação da conta (tá meio difícil de entender)
-                            //     style: TextStyle(
-                            //       color: Colors.white,
-                            //       fontFamily: 'OpenSans',
-                            //       fontSize: 20,
-                            //       fontWeight: FontWeight.bold,
-                            //     ),
-                            //   ),
-                            // ),
                           ],
                         );
                       } else {
