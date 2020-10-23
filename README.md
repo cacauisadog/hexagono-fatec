@@ -1,12 +1,23 @@
 # TempVerify :snowflake::fire:
 Seja muito bem vindo ao repositório do TempVerify!
 
+## Como é o TempVerify? :iphone:
+<div align="center">
+  <img src="https://github.com/cacauisadog/hexagono-fatec/blob/master/images/tela_inicial.png" width="400" hspace="5"/>
+  <img src="https://github.com/cacauisadog/hexagono-fatec/blob/master/images/login.png" width="400" hspace="5"/>
+  <img src="https://github.com/cacauisadog/hexagono-fatec/blob/master/images/tela_principal.png" width="400" hspace="5"/>
+  <img src="https://github.com/cacauisadog/hexagono-fatec/blob/master/images/menu.png" width="400" hspace="5"/>
+  <img src="https://github.com/cacauisadog/hexagono-fatec/blob/master/images/perfil_usuario.png" width="400" hspace="5"/>
+  <img src="https://github.com/cacauisadog/hexagono-fatec/blob/master/images/notificacao_dentro.png" width="400" hspace="5"/>
+  <img src="https://github.com/cacauisadog/hexagono-fatec/blob/master/images/notificacao_fora.png" width="400" hspace="5"/>
+</div>
+
 ## O TempVerify em funcionamento
 Para conferir o TempVerify funcionando você pode clicar [aqui](https://www.youtube.com/watch?v=AYty7aQO1_A&ab_channel=fatecsjc).
 
-## Ferramentas utilizadas
+## Ferramentas utilizadas :building_construction:
 
-### Firebase
+### Firebase 
 O Firebase é uma ferramenta de banco de dados não relacional que pode ser acessada na nuvem, é suportada pelas principais plataformas móveis como Android e iOS (ideal para este projeto), permite desenvolvimento em qualquer dispositivo, além de ser uma plataforma gratuita.
 
 É focado em aumentar a base de usuários e gerar maiores benefícios econômicos, através de recursos como o Dynamic Links (permite que o aplicativo seja utilizado por outros usuários), Cloud Messaging (sistema de notificações) e possui uma ferramenta de analytics.
@@ -27,7 +38,7 @@ Apesar de ser mais poderoso que um Arduino, possui poucas GPIO (portas programá
 ### OneSignal
 O OneSignal é uma ferramenta web que oferece o envio de notificações push para dispositivos das principais plataformas atuais: Android e iOS. É um serviço inicialmente gratuito, mas que se o usuário precisar de mais algumas funcionalidades será necessário pagamento. As notificações podem ser enviadas somente a um segmento de usuários ou a todos. Também é possível programar o horário que a notificação será enviada (instantaneamente ou daqui a algumas horas, por exemplo). Há outras configurações, como ícones, imagens e prioridade. Além disso o OneSignal envia notificações e as exibe em três estados: com o app totalmente fechado, com o app minimizado e com o app aberto.
 
-## Como o app funciona?
+## Como o app funciona? 
 
 ### Login
 O login do TempVerify é feito somente pela conta do Google, pois o gerenciamento e a segurança dos dados são assegurados devido às autenticações do Google. Através do login o app poderá utilizar a foto de perfil do usuário, o nome e sobrenome e o e-mail (que constam na conta do Google).
@@ -43,7 +54,7 @@ O envio das notificações é feito através do OneSignal. Para isso é necessá
 
 ## Equipe
 - Cauê Bittencourt (Scrum Master)
-- [Bárbara Port](https://www.linkedin.com/in/b%C3%A1rbara-port-402158198) (Development Team).
+- [Bárbara Port](https://www.linkedin.com/in/b%C3%A1rbara-port-402158198) (Development Team)
 - Giovanni Santos (Development Team)
 - Adriele Martins (Development Team)
 - Levi Motta (Development Team)
