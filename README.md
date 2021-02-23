@@ -1,5 +1,5 @@
 # TempVerify :snowflake::fire:
-Seja muito bem vindo ao repositório do TempVerify!
+Seja muito bem-vindo ao repositório do TempVerify!
 
 ## Como é o TempVerify? :iphone:
 <div align="center">
